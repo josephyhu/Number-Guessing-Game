@@ -13,8 +13,20 @@ NOTE: If you strongly prefer to work locally on your own computer, you can total
 
 import random
 
-high_score = []
 print("Welcome to the number guessing game!")
+
+def get_input():
+    user_input = input("Choose a number between 1 and 10. ")
+    try:
+        user_input = int(user_input)
+    except ValueError:
+        print("Invalid input. Please try again.")
+    else:
+        if user_input < 1 or user_input > 10:
+            print("The number is outside the range. Please try again.")
+        else:
+            return user_input
+
 def start_game():
     """Psuedo-code Hints
 
@@ -34,41 +46,31 @@ def start_game():
     """
     # write your code inside this function.
     number = random.randint(1, 10)
+    high_score = 0
     tries = 0
     while True:
-        guess = input("Choose a number between 1 and 10. ")
-        try:
-            guess = int(guess)
-        except ValueError:
-            print("Invalid input. Please try again.")
+        guess = get_input()
+        # The program gives me an error unless I put this first if statement in.
+        if type(guess) != int:
+            continue
+        elif guess > number:
+            print("It's lower.")
+        elif guess < number:
+            print("It's higher.")
         else:
-            if guess < 1 or guess > 10:
-                print("The number is outside the range. Please try again.")
-            elif guess < number:
-                print("It's higher.")
-                tries += 1
-            elif guess > number:
-                print("It's lower.")
-                tries += 1
-            else:
-                tries += 1
-                break
-    high_score.append(tries)
+            tries += 1
+            break
+        tries += 1
     print("You've guessed the correct number in {} tries!".format(tries))
     restart = input("Would you like to play again? (y/n) ")
     while restart.lower() != 'y' and restart.lower() != 'n':
         print("Invalid input. Please try again.")
         restart = input("Would you like to play again? (y/n) ")
     if restart.lower() == 'y':
-        i = 0
-        while i <= len(high_score) - 1:
-            if high_score[i] <= high_score[i - 1]:
-                print("The current high score is {}.".format(high_score[i]))
-                start_game()
-            else:
-                print("The current high score is {}.".format(high_score[i - 1]))
-                start_game()
-            i += 1
+        if high_score == 0 or tries < high_score:
+            high_score = tries
+            print("The current high score is {}.".format(high_score))
+        start_game()
     else:
         print("Goodbye!")
         exit()
