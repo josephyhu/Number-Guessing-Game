@@ -11,7 +11,7 @@ NOTE: If you strongly prefer to work locally on your own computer, you can total
 
 import random
 
-
+high_score = []
 print("Welcome to the number guessing game!")
 def start_game():
     """Psuedo-code Hints
@@ -51,16 +51,25 @@ def start_game():
             else:
                 tries += 1
                 break
+    high_score.append(tries)
     print("You've guessed the correct number in {} tries!".format(tries))
     restart = input("Would you like to play again? (y/n) ")
     while restart.lower() != 'y' and restart.lower() != 'n':
         print("Invalid input. Please try again.")
         restart = input("Would you like to play again? (y/n) ")
     if restart.lower() == 'y':
-        print("The current high score is {}.".format(tries))
-        start_game()
+        i = 0
+        while i <= len(high_score) - 1:
+            if high_score[i] <= high_score[i - 1]:
+                print("The current high score is {}.".format(high_score[i]))
+                start_game()
+            else:
+                print("The current high score is {}.".format(high_score[i - 1]))
+                start_game()
+            i += 1
     else:
         print("Goodbye!")
+        exit()
 
 
 if __name__ == '__main__':
