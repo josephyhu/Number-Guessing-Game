@@ -1,3 +1,5 @@
+# I'm going for "Exceeds Expectations" grade, but I'm fine with "Meets Expectations" grade.
+
 """
 Python Web Development Techdegree
 Project 1 - Number Guessing Game
