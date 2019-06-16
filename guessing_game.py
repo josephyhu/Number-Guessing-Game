@@ -1,4 +1,4 @@
-# I'm going for the "Exceeds Expectations" grade.
+# I'm only going for the "Exceeds Expectations" grade.
 
 """
 Python Web Development Techdegree
