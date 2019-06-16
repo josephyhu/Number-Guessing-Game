@@ -51,8 +51,7 @@ def start_game():
 
 def set_high_score(tries):
     if highscore == 0 or tries < highscore:
-        highscore = tries
-        high_score = highscore
+        return tries
     else:
         return highscore
 
