@@ -39,11 +39,9 @@ def start_game():
             print("You've guessed the correct number in {} tries!".format(tries))
             break
     if high_score == 0 or tries < high_score:
-        score = tries
-    else:
-        score = high_score
+        high_score = tries
     if game_end() == False:
-        print("The current high score is {}.".format(score))
+        print("The current high score is {}.".format(high_score))
         start_game()
     else:
         print("Goodbye!")
