@@ -29,18 +29,17 @@ def start_game():
         guess = get_input()
         if type(guess) != int:
             continue
+        tries += 1
+        if guess < number:
+            print("It's higher.")
+        elif guess > number:
+            print("It's lower.")
         else:
-            tries += 1
-            if guess > number:
-                print("It's lower.")
-            elif guess < number:
-                print("It's higher.")
-            else:
-                print("You've guessed the correct number in {} tries!".format(tries))
-                break
-    restart_game()
+            print("You've guessed the correct number in {} tries!".format(tries))
+            break
+    game_end()
 
-def restart_game():
+def game_end():
     restart = input("Would you like to play again? (y/n) ")
     while restart.lower() != 'y' and restart.lower() != 'n':
         print("Invalid input. Please try again.")
@@ -49,8 +48,6 @@ def restart_game():
         start_game()
     else:
         print("Goodbye!")
-        exit()
-
 
 if __name__ == '__main__':
     start_game()
