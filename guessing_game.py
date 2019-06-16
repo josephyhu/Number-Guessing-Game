@@ -38,17 +38,26 @@ def start_game():
         else:
             print("You've guessed the correct number in {} tries!".format(tries))
             break
-    game_end()
+    if high_score == 0 or tries < high_score:
+        score = tries
+    else:
+        score = high_score
+    if game_end() == False:
+        print("The current high score is {}.".format(score))
+        start_game()
+    else:
+        print("Goodbye!")
 
 def game_end():
+    score = 0
     restart = input("Would you like to play again? (y/n) ")
     while restart.lower() != 'y' and restart.lower() != 'n':
         print("Invalid input. Please try again.")
         restart = input("Would you like to play again? (y/n) ")
     if restart.lower() == 'y':
-        start_game()
+        return False
     else:
-        print("Goodbye!")
+        return True
 
 if __name__ == '__main__':
     start_game()
