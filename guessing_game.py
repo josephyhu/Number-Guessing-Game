@@ -7,15 +7,19 @@ Project 1 - Number Guessing Game
 
 import random
 
-highscore = 0
+high_score = 0
 
 print("Welcome to the number guessing game!")
 
 def get_input():
     try:
-        user_input = int(input("Choose a number between 1 and 10. "))
-        if user_input < 1 or user_input > 10:
-            raise ValueError("The number is outside the range.")
+        user_input = input("Choose a number between 1 and 10. ")
+        if user_input.isdigit() == True:
+            user_input = int(user_input)
+            if user_input < 1 or user_input > 10:
+                raise ValueError("The number is outside the range. It must be in between 1 and 10.")
+        else:
+            raise ValueError("It must be an integer between 1 and 10.")
     except ValueError as err:
         print("Invalid input. Please try again.")
         print("({})".format(err))
@@ -47,7 +51,8 @@ def start_game():
 
 def set_high_score(tries):
     if highscore == 0 or tries < highscore:
-        return tries
+        highscore = tries
+        high_score = highscore
     else:
         return highscore
 
