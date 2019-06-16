@@ -48,16 +48,15 @@ def start_game():
     high_score = 0
     tries = 0
     while True:
+        tries += 1
         guess = get_input()
         if guess > number:
             print("It's lower.")
         elif guess < number:
             print("It's higher.")
         else:
-            tries += 1
+            print("You've guessed the correct number in {} tries!".format(tries))
             break
-        tries += 1
-    print("You've guessed the correct number in {} tries!".format(tries))
     restart_game()
 
 def restart_game():
