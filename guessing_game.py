@@ -53,7 +53,6 @@ def set_high_score(tries, highscore):
         return highscore
 
 def game_end():
-    score = 0
     restart = input("Would you like to play again? (y/n) ")
     while restart.lower() != 'y' and restart.lower() != 'n':
         print("Invalid input. Please try again.")
