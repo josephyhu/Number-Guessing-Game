@@ -7,6 +7,8 @@ Project 1 - Number Guessing Game
 
 import random
 
+highscore = 0
+
 print("Welcome to the number guessing game!")
 
 def get_input():
@@ -38,18 +40,17 @@ def start_game():
             print("You've guessed the correct number in {} tries!".format(tries))
             break
     if game_end() == False:
-        high_score = set_high_score(tries)
+        high_score = set_high_score(tries, highscore)
         print("The current high score is {}.".format(high_score))
         start_game()
     else:
         print("Goodbye!")
 
-def set_high_score(tries):
-    high_score = 0
-    if high_score == 0 or tries < high_score:
+def set_high_score(tries, highscore):
+    if highscore == 0 or tries < highscore:
         return tries
     else:
-        return high_score
+        return highscore
 
 def game_end():
     score = 0
