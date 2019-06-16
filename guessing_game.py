@@ -12,9 +12,8 @@ highscore = 0
 print("Welcome to the number guessing game!")
 
 def get_input():
-    user_input = input("Choose a number between 1 and 10. ")
     try:
-        user_input = int(user_input)
+        user_input = int(input("Choose a number between 1 and 10. "))
         if user_input < 1 or user_input > 10:
             raise ValueError("The number is outside the range.")
     except ValueError as err:
