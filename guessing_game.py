@@ -23,7 +23,6 @@ def get_input():
 
 def start_game():
     number = random.randint(1, 10)
-    high_score = 0
     tries = 0
     while True:
         guess = get_input()
@@ -38,13 +37,19 @@ def start_game():
         else:
             print("You've guessed the correct number in {} tries!".format(tries))
             break
-    if high_score == 0 or tries < high_score:
-        high_score = tries
     if game_end() == False:
+        high_score = set_high_score(tries)
         print("The current high score is {}.".format(high_score))
         start_game()
     else:
         print("Goodbye!")
+
+def set_high_score(tries):
+    high_score = 0
+    if high_score == 0 or tries < high_score:
+        return tries
+    else:
+        return high_score
 
 def game_end():
     score = 0
