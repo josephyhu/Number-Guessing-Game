@@ -7,7 +7,7 @@ Project 1 - Number Guessing Game
 
 import random
 
-high_score = 0
+highscore = 0
 
 print("Welcome to the number guessing game!")
 
