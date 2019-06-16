@@ -19,13 +19,12 @@ def get_input():
     user_input = input("Choose a number between 1 and 10. ")
     try:
         user_input = int(user_input)
+        if user_input < 1 or user_input > 10:
+            print("The number is outside the range. Please try again.")
     except ValueError:
         print("Invalid input. Please try again.")
     else:
-        if user_input < 1 or user_input > 10:
-            print("The number is outside the range. Please try again.")
-        else:
-            return user_input
+        return user_input
 
 def start_game():
     """Psuedo-code Hints
@@ -50,10 +49,7 @@ def start_game():
     tries = 0
     while True:
         guess = get_input()
-        # The program gives me an error unless I put this first if statement in.
-        if type(guess) != int:
-            continue
-        elif guess > number:
+        if guess > number:
             print("It's lower.")
         elif guess < number:
             print("It's higher.")
@@ -62,14 +58,14 @@ def start_game():
             break
         tries += 1
     print("You've guessed the correct number in {} tries!".format(tries))
+    restart_game()
+
+def restart_game():
     restart = input("Would you like to play again? (y/n) ")
     while restart.lower() != 'y' and restart.lower() != 'n':
         print("Invalid input. Please try again.")
         restart = input("Would you like to play again? (y/n) ")
     if restart.lower() == 'y':
-        if high_score == 0 or tries < high_score:
-            high_score = tries
-            print("The current high score is {}.".format(high_score))
         start_game()
     else:
         print("Goodbye!")
