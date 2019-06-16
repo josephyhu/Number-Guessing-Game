@@ -1,4 +1,4 @@
-# I'm going for "Exceeds Expectations" grade, but I'm fine with "Meets Expectations" grade.
+# I'm going for the "Exceeds Expectations" grade.
 
 """
 Python Web Development Techdegree
@@ -7,7 +7,7 @@ Project 1 - Number Guessing Game
 
 import random
 
-highscore = 0
+highscore = []
 
 print("Welcome to the number guessing game!")
 
@@ -43,17 +43,12 @@ def start_game():
             print("You've guessed the correct number in {} tries!".format(tries))
             break
     if game_end() == False:
-        highscore = set_high_score(tries)
-        print("The current high score is {}.".format(highscore))
+        highscore.append(tries)
+        highscore.sort()
+        print("The current high score is {}.".format(highscore[0]))
         start_game()
     else:
         print("Goodbye!")
-
-def set_high_score(tries):
-    if highscore == 0 or tries < highscore:
-        return tries
-    else:
-        return highscore
 
 def game_end():
     restart = input("Would you like to play again? (y/n) ")
