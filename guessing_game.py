@@ -31,7 +31,7 @@ def start_game():
     tries = 0
     while True:
         guess = get_input()
-        # The program gives me an error unless I put this if statement in.
+        # The program gives me an error if I enter an invalid input unless I put this if statement in.
         if type(guess) != int:
             continue
         tries += 1
