@@ -1,1 +1,2 @@
-# My 1st Techdegree project: Number Guessing Game
+# Number Guessing Game
+1st Treehouse Python Techdegree project.
